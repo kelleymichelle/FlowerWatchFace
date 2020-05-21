@@ -13,6 +13,10 @@ import Foundation
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
+    @IBOutlet weak var dateLabel: WKInterfaceLabel!
+    
+    let today = Date()
+    let dateFormatter = DateFormatter()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -28,19 +32,28 @@ class InterfaceController: WKInterfaceController {
             // Present the scene
             self.skInterface.presentScene(scene)
             
-            // Use a value that will maintain a consistent frame rate
+            // Use a value that will maintain a consistent frame rate
             self.skInterface.preferredFramesPerSecond = 30
         }
+        updateDate()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        skInterface.isPaused = false
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    func updateDate() {
+        dateFormatter.dateFormat = "E d MMM"
+        let todaysDate = dateFormatter.string(from: today)
+        dateLabel.setText(todaysDate)
+    }
+
 
 }
