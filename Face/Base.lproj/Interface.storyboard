@@ -9,11 +9,16 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Face" customModuleProvider="target">
+                <controller fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Face" customModuleProvider="target">
                     <items>
-                        <spriteKitScene alignment="left" scene="Actions.sks" id="ARY-87-yzO"/>
+                        <spriteKitScene alignment="left" scene="GameScene.sks" id="ARY-87-yzO"/>
+                        <label alignment="center" text="date" textAlignment="center" baselineAdjustment="alignCenters" id="92L-Uw-MXg">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" style="UICTFontTextStyleTitle3"/>
+                        </label>
                     </items>
                     <connections>
+                        <outlet property="dateLabel" destination="92L-Uw-MXg" id="dbf-8K-emV"/>
                         <outlet property="skInterface" destination="ARY-87-yzO" id="U6w-Od-uXj"/>
                     </connections>
                 </controller>

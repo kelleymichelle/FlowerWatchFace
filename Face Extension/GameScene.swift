@@ -13,23 +13,19 @@ class GameScene: SKScene {
     var minuteHand:SKSpriteNode = SKSpriteNode()
     var hourHand:SKSpriteNode = SKSpriteNode()
     var faceBackground:SKSpriteNode = SKSpriteNode()
+//    var dateLabel:SKLabelNode = SKLabelNode()
 
-//    let one = SKTexture(image: #imageLiteral(resourceName: "1.png"))
-//    let two = SKTexture(image: #imageLiteral(resourceName: "2.png"))
-//    let three = SKTexture(image: #imageLiteral(resourceName: "3.png"))
-//    let four = SKTexture(image: #imageLiteral(resourceName: "4.png"))
-//    let five = SKTexture(image: #imageLiteral(resourceName: "5.png"))
-//    let six = SKTexture(image: #imageLiteral(resourceName: "6.png"))
-//    let seven = SKTexture(image: #imageLiteral(resourceName: "7.png"))
-//    let eight = SKTexture(image: #imageLiteral(resourceName: "8.png"))
-//    let nine = SKTexture(image: #imageLiteral(resourceName: "9.png"))
-//    let ten = SKTexture(image: #imageLiteral(resourceName: "10.png"))
-//    let eleven = SKTexture(image: #imageLiteral(resourceName: "12.png"))
-//    let twelve = SKTexture(image: #imageLiteral(resourceName: "12.png"))
+    let today = Date()
+    let dateFormatter = DateFormatter()
+    
+//    dateFormatter.dateFormat = "E d MMM"
+    
+    
     
     let newTexture = SKTexture(imageNamed: "1")
     
     override func sceneDidLoad() {
+        
 
         if let minHand:SKSpriteNode = self.childNode(withName: "minuteHand") as? SKSpriteNode{
             minuteHand = minHand
@@ -42,11 +38,16 @@ class GameScene: SKScene {
         if let watchFace:SKSpriteNode = self.childNode(withName: "faceBackground") as? SKSpriteNode{
             faceBackground = watchFace
         }
+        
+//        if let dateShow:SKLabelNode = self.childNode(withName: "dateLabel") as? SKLabelNode{
+//            dateLabel = dateShow
+//        }
     }
         
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-    
+//        updateDate()
+       
         let date = Date()
         let calendar = Calendar.current
         let hour = CGFloat(calendar.component(.hour, from: date))
@@ -87,5 +88,10 @@ class GameScene: SKScene {
         
         return times[hour]!
     }
+    
+//    func updateDate() {
+//        dateFormatter.dateFormat = "E d MMM"
+//        dateLabel.text = dateFormatter.string(from: today)
+//    }
 
 }
